@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :oficinas
 
   get 'home/about'
-  root 'cars#index'
+  root 'home#index'
 
 
 
