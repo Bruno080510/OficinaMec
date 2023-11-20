@@ -22,17 +22,19 @@ class CarsController < ApplicationController
   # POST /cars or /cars.json
   def create
     @car = Car.new(car_params)
-
+  
     respond_to do |format|
       if @car.save
         format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
         format.json { render :show, status: :created, location: @car }
       else
+        puts @car.errors.full_messages # Adicione esta linha para imprimir os erros no console
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @car.errors, status: :unprocessable_entity }
       end
     end
   end
+  
 
   # PATCH/PUT /cars/1 or /cars/1.json
   def update
@@ -65,6 +67,6 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.require(:car).permit(:modelo, :marca, :ano, :description, :placa)
+      params.require(:car).permit(:modelo, :marca, :ano, :description, :placa, :oficina_id)
     end
 end

@@ -1,6 +1,6 @@
 <%= form_with(model: car) do |form| %>
   <% if car.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
 
       <ul>
@@ -10,6 +10,8 @@
       </ul>
     </div>
   <% end %>
+
+
 
   <div>
     <%= form.label :modelo, style: "display: block" %>
@@ -35,6 +37,10 @@
     <%= form.label :placa, style: "display: block" %>
     <%= form.text_field :placa %>
   </div>
+  <a>
+  <strong>Cliente</strong>
+  <%= collection_select(:car, :oficina_id, Oficina.all, :id, :first_name, prompt: true) %>
+</a>
 
   <div>
     <%= form.submit %>
