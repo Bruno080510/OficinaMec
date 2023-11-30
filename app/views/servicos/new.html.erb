@@ -1,0 +1,15 @@
+<h1>New servico</h1>
+
+
+<%= simple_form_for @servico do |form| %>
+  <%= form.association :car, collection: Car.all, label_method: :modelo, value_method: :id, include_blank: true %>
+  
+  <%= form.input :tipoDeServico %>
+  <%= form.submit %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to servicos", servicos_path %>
+</div>

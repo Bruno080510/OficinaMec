@@ -1,9 +1,12 @@
 <p class="alert alert-success text-black" ><%= notice %></p>
 
 <h1>Cliente: <%= @car.oficina.first_name %></h1>
-
 <%= render @car %>
 
+
+ <% @car.servicos.each do |servico| %>
+      <li><%= servico.tipoDeServico %></li>
+    <% end %>
 <div>
   <%= link_to "Edit this car", edit_car_path(@car) %> |
   <%= link_to "Back to cars", cars_path %>

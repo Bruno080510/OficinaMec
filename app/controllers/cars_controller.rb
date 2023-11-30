@@ -51,12 +51,15 @@ class CarsController < ApplicationController
 
   # DELETE /cars/1 or /cars/1.json
   def destroy
-    @car.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to cars_url, notice: "Car was successfully destroyed." }
-      format.json { head :no_content }
+    @car = Car.find(params[:id])
+    
+    # Verificar se há serviços associados ao carro
+    if @car.servico.present?
+      @car.servico.destroy
     end
+  
+    @car.destroy
+    redirect_to cars_path
   end
 
   private
@@ -67,6 +70,6 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.require(:car).permit(:modelo, :marca, :ano, :description, :placa, :oficina_id)
+      params.require(:car).permit(:modelo, :marca, :ano, :description, :placa, :oficina_id, :servico_id, :tipoDeServico)
     end
 end
