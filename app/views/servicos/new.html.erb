@@ -2,8 +2,9 @@
 
 
 <%= simple_form_for @servico do |form| %>
-  <%= form.association :car, collection: Car.all, label_method: :modelo, value_method: :id, include_blank: true %>
-  
+
+ <%= form.association :car, collection: Car.all, label_method: lambda { |car| "#{car.modelo} - #{car.description}" }, value_method: :id, include_blank: true %>
+
   <%= form.input :tipoDeServico %>
   <%= form.submit %>
 <% end %>

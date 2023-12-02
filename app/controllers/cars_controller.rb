@@ -52,14 +52,21 @@ class CarsController < ApplicationController
   # DELETE /cars/1 or /cars/1.json
   def destroy
     @car = Car.find(params[:id])
-    
-    # Verificar se há serviços associados ao carro
-    if @car.servico.present?
-      @car.servico.destroy
-    end
+
+    begin
+      # Verificar se há serviços associados ao carro
+      if @car.servicos.present?
+        puts "Antes de destruir os serviços: #{Servico.where(car_id: @car.id).pluck(:id)}"
+        @car.servicos.destroy_all
+        puts "Depois de destruir os serviços: #{Servico.where(car_id: @car.id).pluck(:id)}"
+      end
   
-    @car.destroy
-    redirect_to cars_path
+      @car.destroy
+      redirect_to cars_path, notice: 'Carro foi excluído com sucesso.'
+    rescue StandardError => e
+      puts "Erro ao excluir o carro: #{e.message}"
+      redirect_to cars_path, alert: "Erro ao excluir o carro: #{e.message}"
+    end
   end
 
   private

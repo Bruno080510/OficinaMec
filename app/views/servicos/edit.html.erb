@@ -1,7 +1,12 @@
 <h1>Editing servico</h1>
 
-<%= render "form", servico: @servico %>
+<%= simple_form_for @servico do |form| %>
 
+ <%= form.association :car, collection: Car.all, label_method: lambda { |car| "#{car.modelo} - #{car.description}" }, value_method: :id, include_blank: true %>
+
+  <%= form.input :tipoDeServico %>
+  <%= form.submit %>
+<% end %>
 <br>
 
 <div>
