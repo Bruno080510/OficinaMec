@@ -1,0 +1,20 @@
+<h1>New peca</h1>
+
+
+<%= simple_form_for @peca do |form| %>
+<div class="d-flex flex-col">
+  <%= form.association :servico, collection: Servico.all, label_method: :tipoDeServico, value_method: :id, include_blank: true %>
+      <%= form.input :name %>
+      <%= form.input :quantidade %>
+      <%= form.label :valor, style: "display: block" %>
+      <%= form.number_field :valor %>
+      <div class="ps-3">      
+        <%= form.submit %>
+      </div>
+  <% end %>
+</div>
+<br>
+
+<div>
+  <%= link_to "Back to pecas", pecas_path %>
+</div>

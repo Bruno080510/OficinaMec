@@ -1,13 +1,26 @@
 <p class="alert alert-success text-black" ><%= notice %></p>
 
+<% total_servicos = @car.servicos.sum(:valor) %>
+
 <h1>Cliente: <%= @car.oficina.first_name %></h1>
 <%= render @car %>
 
+
+<h1>Serviços</h1>
 
  <% @car.servicos.each do |servico| %>
       <li><%= servico.tipoDeServico %></li>
       <li><%= servico.valor %></li>
     <% end %>
+<strong>Total</strong>
+<%= total_servicos %>
+<h1>Peças</h1>
+<% @car.servicos.each do |servico| %>
+  <% servico.pecas.each do |peca| %>
+    <li><%= peca.name %></li>
+    <li>valor:<%= peca.valor %></li>
+  <% end %>
+<% end %>
 <div>
   <%= link_to "Edit this car", edit_car_path(@car) %> |
   <%= link_to "Back to cars", cars_path %>

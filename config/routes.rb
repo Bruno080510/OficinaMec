@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pecas
   resources :servicos
   devise_for :users
   resources :cars

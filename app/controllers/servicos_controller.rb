@@ -59,9 +59,9 @@ class ServicosController < ApplicationController
     def set_servico
       @servico = Servico.find(params[:id])
     end
-
+    
     # Only allow a list of trusted parameters through.
     def servico_params
-      params.require(:servico).permit(:tipoDeServico, :valor, :car_id)
+      params.require(:servico).permit(:tipoDeServico, :valor, :car_id, :peca_id, :name, :quantidade, :valor)
     end
 end

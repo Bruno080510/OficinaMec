@@ -3,6 +3,11 @@
 <%= render @servico %>
 <h1>Cliente: <%= @car.oficina.first_name %></h1>
 <%= render @car %>
+<h2>Pecas:</h2>
+  <% @servico.pecas.each do |peca| %>
+    <li><%= peca.name %></li>
+    <li>valor:<%= peca.valor %></li>
+  <% end %>
 
 <div>
   <%= link_to "Edit this servico", edit_servico_path(@servico) %> |
