@@ -6,6 +6,7 @@
 
  <% @car.servicos.each do |servico| %>
       <li><%= servico.tipoDeServico %></li>
+      <li><%= servico.valor %></li>
     <% end %>
 <div>
   <%= link_to "Edit this car", edit_car_path(@car) %> |
