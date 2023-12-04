@@ -1,0 +1,22 @@
+
+<%= simple_form_for(@equipe) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    <%= f.input :descricao %>
+  </div>
+
+    
+
+  <!--
+    <a>
+     <strong>Funcionario</strong>
+  <%= collection_select(:equipe, :funcionario_id, Funcionario.all, :id, :name, prompt: true) %>
+  </a>
+-->
+    <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -41,6 +41,9 @@
   <strong>Cliente</strong>
   <%= collection_select(:car, :oficina_id, Oficina.all, :id, :first_name, prompt: true) %>
 </a>
+  <strong>Equipe</strong>
+<%= collection_select(:car, :equipe_id, Equipe.all, :id, :nome, prompt: true) %>
+
 
 
   <div>

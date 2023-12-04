@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_03_194738) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_061507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,25 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_194738) do
     t.datetime "updated_at", null: false
     t.integer "oficina_id"
     t.integer "servico_id"
+    t.bigint "equipe_id"
+    t.index ["equipe_id"], name: "index_cars_on_equipe_id"
+  end
+
+  create_table "equipes", force: :cascade do |t|
+    t.string "nome"
+    t.text "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "funcionario_id"
+    t.index ["funcionario_id"], name: "index_equipes_on_funcionario_id"
+  end
+
+  create_table "funcionarios", force: :cascade do |t|
+    t.string "name"
+    t.string "endereco"
+    t.integer "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "oficinas", force: :cascade do |t|
@@ -42,7 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_194738) do
     t.float "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "servico_id", 
+    t.bigint "servico_id"
     t.index ["servico_id"], name: "index_pecas_on_servico_id"
   end
 
@@ -69,6 +88,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_194738) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "equipes"
   add_foreign_key "pecas", "servicos"
   add_foreign_key "servicos", "cars"
   add_foreign_key "servicos", "pecas"
