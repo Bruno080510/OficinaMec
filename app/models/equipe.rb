@@ -1,4 +1,4 @@
 class Equipe < ApplicationRecord
-    has_many :funcionarios
+    has_many :mecanicos
     has_many :cars
 end

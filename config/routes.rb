@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  resources :mecanicos
   resources :equipes
-  resources :funcionarios
   resources :pecas
   resources :servicos
   devise_for :users

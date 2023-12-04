@@ -2,6 +2,10 @@
 
 <%= render @equipe %>
 
+ <% @equipe.mecanicos.each do |mecanico| %>
+      <li class=""><%= link_to mecanico.nome , mecanico %></li>
+    <% end %>
+
 
 <div>
   <%= link_to "Edit this equipe", edit_equipe_path(@equipe) %> |

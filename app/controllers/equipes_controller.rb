@@ -9,7 +9,6 @@ class EquipesController < ApplicationController
   # GET /equipes/1 or /equipes/1.json
   def show
     @equipe = Equipe.find(params[:id])
-    @funcionarios = @equipe.funcionarios
   end
   
 
@@ -68,6 +67,6 @@ class EquipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equipe_params
-      params.require(:equipe).permit(:nome, :descricao, :funcionario_id, :nome)
+      params.require(:equipe).permit(:nome, :descricao, :mecanico_id,)
     end
 end

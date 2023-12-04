@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @mecanico %>
+
+<p>Equipe destinado: <%= @mecanico.equipe.nome %></p>
+
+<div>
+  <%= link_to "Edit this mecanico", edit_mecanico_path(@mecanico) %> |
+  <%= link_to "Back to mecanicos", mecanicos_path %>
+
+  <%= button_to "Destroy this mecanico", @mecanico, method: :delete %>
+</div>

@@ -2,8 +2,9 @@
 
 <% total_servicos = @car.servicos.sum(:valor) %>
 <% total_pecas = @car.servicos.flat_map { |servico| servico.pecas.to_a }.sum { |peca| peca.valor * peca.quantidade } %>
+<% valor_total = total_servicos + total_pecas %>
 <h1>Cliente: <%= @car.oficina.first_name %></h1>
-<p>Equipe responsável: <%= @car.equipe.nome %></p>
+<p>Equipe responsável: <%= link_to @car.equipe.nome , @car.equipe %></p>
 
 <%= render @car %>
 
@@ -14,16 +15,21 @@
       <li><%= servico.tipoDeServico %></li>
       <li>$ <%= servico.valor %></li>
     <% end %>
+      <%= link_to 'Add Servico', servicos_path, class:"nav-link active" %>
+
     
   <h1>Peças</h1>
   <% @car.servicos.each do |servico| %>
     <% servico.pecas.each do |peca| %>
-      <li><%= peca.name %></li>
+      <li><%= peca.name %> | quantidade: <%= peca.quantidade %></li>
       <li>$ <%= peca.valor %></li>
     <% end %>
   <% end %>
+  <%= link_to 'Add Peças', pecas_path, class:"nav-link active" %>
+
   <p>Total de Serviços: <%= total_servicos %></p>
 <p>Total de Peças: <%= total_pecas %></p>
+<p>Total: <%= valor_total %></p>
 <div>
   <%= link_to "Edit this car", edit_car_path(@car) %> |
   <%= link_to "Back to cars", cars_path %>
