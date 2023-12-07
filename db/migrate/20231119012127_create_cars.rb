@@ -6,7 +6,6 @@ class CreateCars < ActiveRecord::Migration[7.1]
       t.integer :ano
       t.text :description
       t.string :placa
-      t.belongs_to :servico, foreign_key: true
       t.timestamps
     end
   end

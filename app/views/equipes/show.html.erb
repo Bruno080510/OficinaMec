@@ -2,6 +2,8 @@
 
 <%= render @equipe %>
 
+<h1>Funcionarios dessa equipe</h1>
+
  <% @equipe.mecanicos.each do |mecanico| %>
       <li class=""><%= link_to mecanico.nome , mecanico %></li>
     <% end %>

@@ -2,14 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: Postgre2005
-  host: localhost
+  sslmode: require
 
 development:
   <<: *default
-  database: oficinaMecanica_development
+  username: doadmin
+  password: AVNS_e7siKw4mKEKCbz-zk5s
+  host: db-postgresql-nyc3-22801-do-user-15310791-0.c.db.ondigitalocean.com
+  port: 25060
+  database: defaultdb
 
-test:
-  <<: *default
-  database: oficinaMecanica_test

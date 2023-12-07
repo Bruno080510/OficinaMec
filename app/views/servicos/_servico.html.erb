@@ -1,8 +1,12 @@
-<div id="<%= dom_id servico %>">
-  <p>
-    <strong>Tipo de Servico:</strong>
-    <%= servico.tipoDeServico %>
-    <strong>Valor</strong>
-    <%= servico.valor %>
-  </p>
+<div id="<%= dom_id servico %>" class="d-flex flex-row">
+<div>
+    <p>
+      <strong>Tipo de Servico:</strong>
+      <%= servico.tipoDeServico %>
+    </p>
+</div>
+  <div>  
+    <p><strong>Valor</strong>
+      <%= servico.valor %></p>
+  </div>
 </div>

@@ -3,8 +3,8 @@
 <%= render @oficina %>
 
 <div>
-  <%= link_to "Edit this oficina", edit_oficina_path(@oficina) %> |
-  <%= link_to "Back to oficinas", oficinas_path %>
+  <%= link_to "Editar Cliente", edit_oficina_path(@oficina) %> |
+  <%= link_to "Voltar", oficinas_path %>
 
-  <%= button_to "Destroy this oficina", @oficina, method: :delete %>
+  <%= button_to "Excluir cliente", @oficina, method: :delete %>
 </div>
