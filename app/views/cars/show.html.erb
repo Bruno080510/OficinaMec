@@ -1,43 +1,53 @@
-<div style="margin-left: 200px; padding: 15px;">
+<div style="margin-left: 200px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background-color: #fff;">
 
-  <p class="alert alert-success text-black" ><%= notice %></p>
+  <p class="alert alert-success text-dark"><%= notice %></p>
 
   <% total_servicos = @car.servicos.sum(:valor) %>
   <% total_pecas = @car.servicos.flat_map { |servico| servico.pecas.to_a }.sum { |peca| peca.valor * peca.quantidade } %>
   <% valor_total = total_servicos + total_pecas %>
-  <p>Equipe responsável: <%= link_to @car.equipe.nome , @car.equipe %></p>
 
-  <%= render @car %>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <!-- Conteúdo do Card do Carro aqui -->
+          <%= render @car %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div style="padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background-color: #fff;">
 
+          <p>Equipe responsável: <%= link_to @car.equipe.nome, @car.equipe, class: "text-info" %></p>
 
-  <h1>Serviços</h1>
+          <h1 class="mt-4">Serviços</h1>
 
-  <% @car.servicos.each do |servico| %>
-        <p><strong>Serviço </strong>: <%= servico.tipoDeServico %></p>
-        <p><strong>Valor </strong>: $ <%= servico.valor %></p>
-      <% end %>
-        <%= link_to 'Adicionar Servico', servicos_path, class:"btn btn-primary" %>
+          <% @car.servicos.each do |servico| %>
+            <p><strong>Serviço:</strong> <%= servico.tipoDeServico %> | <strong>Valor:</strong> $<%= servico.valor %></p>
+          <% end %>
+          <%= link_to 'Adicionar Serviço', servicos_path, class: "btn btn-success mt-2 mr-2" %>
 
-      
-    <h1>Peças</h1>
-    <% @car.servicos.each do |servico| %>
-      <% servico.pecas.each do |peca| %>
-        <p><strong>Peça</strong>: <%= peca.name %> | <strong>Quantidade </strong>: <%= peca.quantidade %></p>
-        <p><strong>Valor </strong>: $ <%= peca.valor %></p>
-      <% end %>
-    <% end %>
-    <div class="pb-2">  
-      <%= link_to 'Adicionar Peças', pecas_path, class:"btn btn-primary " %>
+          <h1 class="mt-4">Peças</h1>
+          <% @car.servicos.each do |servico| %>
+            <% servico.pecas.each do |peca| %>
+              <p><strong>Peça:</strong> <%= peca.name %> | <strong>Quantidade:</strong> <%= peca.quantidade %> | <strong>Valor:</strong> $<%= peca.valor %></p>
+            <% end %>
+          <% end %>
+          <div class="pb-2">
+            <%= link_to 'Adicionar Peças', pecas_path, class: "btn btn-primary mt-2 mr-2" %>
+          </div>
+
+          <p class="mt-4"><strong>Total de Serviços:</strong> $<%= total_servicos %></p>
+          <p><strong>Total de Peças:</strong> $<%= total_pecas %></p>
+          <p class="h3"><strong>Total:</strong> $<%= valor_total %></p>
+
+          <div class="mt-4">
+            <%= link_to "Editar este carro", edit_car_path(@car), class: "btn btn-warning mr-2" %> |
+            <%= link_to "Voltar para carros", cars_path, class: "btn btn-secondary mr-2" %>
+            <%= button_to "Excluir este carro", @car, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+          </div>
+
+        </div>
+      </div>
     </div>
-
-    <p><strong>Total de Serviços:</strong> $<%= total_servicos %></p>
-  <p><strong>Total de Peças:</strong> $<%= total_pecas %></p>
-  <p><strong>Total:</strong> $<%= valor_total %></p>
-  <div>
-    <%= link_to "Edit this car", edit_car_path(@car) %> |
-    <%= link_to "Back to cars", cars_path %>
-
-    <%= button_to "Destroy this car", @car, method: :delete %>
   </div>
-
 </div>

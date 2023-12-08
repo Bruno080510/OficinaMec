@@ -39,8 +39,7 @@ RUN chmod +x bin/* && \
     sed -i 's/ruby\.exe$/ruby/' bin/*
 
 # Precompiling assets for production with the correct secret key base
-ARG SECRET_KEY_BASE
-
+ARG SECRET_KEY_BASE=4e15324e293ad9ec291e78b45c5fed82455cf785dbf8906848b47e916d02b0a59fac0fd8873d8f9693f63d2cab11e3b85a935c3d26eaab24a88e6fd32b84d13b
 # Final stage for app image
 FROM base
 

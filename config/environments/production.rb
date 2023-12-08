@@ -91,6 +91,7 @@ Rails.application.configure do
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
+#rails  # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

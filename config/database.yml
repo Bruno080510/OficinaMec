@@ -12,3 +12,10 @@ development:
   port: 25060
   database: defaultdb
 
+production:
+  <<: *default
+  username: doadmin
+  password: AVNS_e7siKw4mKEKCbz-zk5s
+  host: db-postgresql-nyc3-22801-do-user-15310791-0.c.db.ondigitalocean.com
+  port: 25060
+  database: defaultdb
