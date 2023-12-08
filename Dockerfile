@@ -30,6 +30,7 @@ RUN bundle config --local build.pg --with-pg-config=/usr/pgsql-14/bin/pg_config 
 # Copy application code
 COPY . .
 
+RUN bundle exec rake assets:precompile
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
@@ -45,7 +46,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq5 && \
+    apt-get install --no-install-recommends -y curl libvips libpq-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
