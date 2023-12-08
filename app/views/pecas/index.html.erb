@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div style="margin-left: 200px; padding: 15px;">
 
-<h1>Pecas</h1>
+  <p style="color: green"><%= notice %></p>
 
-<div id="pecas">
-  <% @pecas.each do |peca| %>
-    <%= render peca %>
-    <p>
-      <%= link_to "Show this peca", peca %>
-    </p>
-  <% end %>
+  <h1>Pecas</h1>
+
+  <div id="pecas">
+    <% @pecas.each do |peca| %>
+      <%= render peca %>
+      <p>
+        <%= link_to "Show this peca", peca %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New peca", new_peca_path %>
 </div>
-
-<%= link_to "New peca", new_peca_path %>

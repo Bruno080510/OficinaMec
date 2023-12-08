@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div style="margin-left: 200px; padding: 15px;">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Servicos</h1>
+  <h1>Servicos</h1>
 
-<div id="servicos">
-  <% @servicos.each do |servico| %>
-    <%= render servico %>
-    <p>
-      <%= link_to "Show this servico", servico %>
-    </p>
-  <% end %>
+  <div id="servicos">
+    <% @servicos.each do |servico| %>
+      <%= render servico %>
+      <p>
+        <%= link_to "Show this servico", servico %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New servico", new_servico_path %>
 </div>
-
-<%= link_to "New servico", new_servico_path %>

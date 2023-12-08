@@ -1,48 +1,43 @@
-   <nav class="navbar-dark navbar navbar-expand-lg bg-dark">
+<!-- Sidebar -->
+<aside class="navbar-dark bg-dark" style="position: fixed; left: 0; top: 0; bottom: 0; width: 200px;">
   <div class="container-fluid">
-
-    <%= link_to 'Friend List', root_path, class:"navbar-brand" %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <% if user_signed_in?%>
-          <li class="nav-item">
-            <%= link_to 'Add Car', cars_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Add Peças', pecas_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Add Servico', servicos_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Add Client', oficinas_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Edit Profile",
-            edit_user_registration_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link active" %>
-          </li>
-        <% else%>
-            <li class="nav-item">
-            <%= link_to "Sign Up",
-            new_user_registration_path, class:"nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign In",
-            new_user_session_path, class:"nav-link" %>
-          </li>
-        <%end%>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+    <%= link_to 'Dashboard', root_path, class: "navbar-brand" %>
+    <ul class="navbar-nav justify-center text-center fs-4">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Add Car', cars_path, class: "nav-link " %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add Peças', pecas_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add Servico', servicos_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add Client', oficinas_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
-</nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main-content" style="margin-left: 200px; padding: 15px;">
+  <div class="container-fluid">
+    <!-- Your main content goes here -->
+    
+  </div>
+</div>

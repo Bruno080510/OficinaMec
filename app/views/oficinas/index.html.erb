@@ -1,18 +1,21 @@
-<p class="pb-2" style="color: green"><%= notice %></p>
+<div style="margin-left: 200px; padding: 15px;">
 
-<h1>Clientes cadastrados</h1>
+  <p class="pb-2" style="color: green"><%= notice %></p>
 
-<div id="oficinas" class="d-flex flex-row">
-  <div class=" d-flex flex-row">
-    <% @oficinas.each do |oficina| %>
-    <div >    
-        <%= render oficina %>
-        <p>
-          <%= link_to "Mostrar cliente", oficina %>
-        </p>
+  <h1>Clientes cadastrados</h1>
+
+  <div id="oficinas" class="d-flex flex-row">
+    <div class=" d-flex flex-row">
+      <% @oficinas.each do |oficina| %>
+      <div >    
+          <%= render oficina %>
+          <p>
+            <%= link_to "Mostrar cliente", oficina %>
+          </p>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
-</div>
 
-<%= link_to "Novo Cliente", new_oficina_path, class:"btn btn-primary" %>
+  <%= link_to "Novo Cliente", new_oficina_path, class:"btn btn-primary" %>
+</div>
