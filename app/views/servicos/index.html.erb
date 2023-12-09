@@ -1,16 +1,19 @@
 <div style="margin-left: 200px; padding: 15px;">
   <p style="color: green"><%= notice %></p>
 
-  <h1>Servicos</h1>
+  <h1>Servicos Cadastrados</h1>
+    <%= link_to "Cadastrar Servico", new_servico_path, class: "btn btn-success my-3 fixed" %>
+
 
   <div id="servicos">
     <% @servicos.each do |servico| %>
       <%= render servico %>
       <p>
-        <%= link_to "Show this servico", servico %>
+        <div class="mr-2 my-3">
+          <%= link_to "Edit this servico", edit_servico_path(servico), class: "btn btn-primary" %>
+        </div>
       </p>
     <% end %>
   </div>
 
-  <%= link_to "New servico", new_servico_path %>
 </div>

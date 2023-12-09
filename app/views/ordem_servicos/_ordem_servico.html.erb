@@ -1,0 +1,38 @@
+<div class="card" style="margin-left: 200px; width: 18rem;">
+  <div id="<%= dom_id ordem_servico %>" class="card-body">
+    <p class="card-text">
+      <strong class="block font-medium mb-1">Carro:</strong>
+      <%= ordem_servico.car.modelo %> (<%= ordem_servico.car.marca %> - <%= ordem_servico.car.ano %>)
+    </p>
+
+    <p class="card-text my-3">
+      <strong class="block font-medium">Servico:</strong>
+      <%= ordem_servico.servico.tipoDeServico %> | Valor: <%= number_to_currency(ordem_servico.servico.valor) %>
+    </p>
+
+    <p class="card-text my-3">
+      <strong class="block font-medium">Peca:</strong>
+      <%= ordem_servico.peca.name %> | Valor: <%= number_to_currency(ordem_servico.peca.valor) %>
+    </p>
+
+    <p class="card-text my-3">
+      <strong class="block font-medium">Equipe:</strong>
+      <%= ordem_servico.equipe.nome %>
+    </p>
+
+    <p class="card-text my-3">
+      <strong class="block font-medium">Data hora:</strong>
+      <%= ordem_servico.data_hora %>
+    </p>
+
+    <p class="card-text my-3">
+      <strong class="block font-medium">Descricao:</strong>
+      <%= ordem_servico.descricao %>
+    </p>
+
+    <% if action_name != "show" %>
+      <%= link_to "Editar ordem servico", edit_ordem_servico_path(ordem_servico), class: "btn btn-outline-secondary rounded-lg" %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+</div>

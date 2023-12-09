@@ -9,7 +9,6 @@ class ServicosController < ApplicationController
   # GET /servicos/1 or /servicos/1.json
   def show
     @servico = Servico.find(params[:id])
-    @car = @servico.car
   end
 
   # GET /servicos/new

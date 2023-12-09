@@ -1,22 +1,22 @@
-<div style="margin-left: 200px; padding: 15px;">
+<div class="container mt-4" style="margin-left: 200px; padding: 15px;">
+  <h1 class="mb-4">Novo Servico</h1>
 
-  <h1>New Servico</h1>
+  <%= simple_form_for @servico, html: { class: 'd-flex flex-column' } do |form| %>
+    <div class="mb-3">
+      <%= form.input :tipoDeServico, class: 'form-control' %>
+    </div>
 
-  <%= simple_form_for @servico do |form| %>
-    <div class="d-flex flex-col">
-      <%= form.association :car, collection: Car.all, label_method: lambda { |car| "#{car.modelo} - #{car.description}" }, value_method: :id, include_blank: true %>
-      <%= form.input :tipoDeServico %>
-      <%= form.label :valor, style: "display: block" %>
-      <%= form.number_field :valor %>
-      <div class="ps-3">      
-        <%= form.submit %>
-      </div>
+    <div class="mb-3">
+      <%= form.label :valor, class: 'form-label', style: 'display: block' %>
+      <%= form.number_field :valor, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit 'Save', class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <br>
-
   <div>
-    <%= link_to "Back to servicos", servicos_path %>
+    <%= link_to "Voltar", servicos_path, class: 'btn btn-secondary' %>
   </div>
 </div>

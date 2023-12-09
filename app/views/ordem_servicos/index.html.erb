@@ -1,0 +1,21 @@
+<div style="margin-left: 200px; padding: 10px;">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Ordem servicos</h1>
+    <%= link_to "New ordem servico", new_ordem_servico_path, class: "btn btn-success" %>
+  </div>
+</div>
+
+  <div id="ordem_servicos" class="min-w-full" style="margin-left: 60px; padding: 15px;">
+    <div class="row row-cols-1 row-cols-md-3">
+      <% @ordem_servicos.each do |ordem_servico| %>
+        <div class="col mb-4">
+          <%= render partial: 'ordem_servicos/ordem_servico', locals: { ordem_servico: ordem_servico } %>
+        </div>
+        
+      <% end %>
+    </div>
+  </div>

@@ -1,22 +1,26 @@
 <div style="margin-left: 200px; padding: 15px;">
-  <h1>New peca</h1>
+ <div class="container mt-4">
+  <h1 class="mb-4">Nova Peca</h1>
 
+  <%= simple_form_for @peca, html: { class: 'd-flex flex-column' } do |form| %>
+    <div class="mb-3">
+      <%= form.input :name, label_html: { class: 'form-label' }, input_html: { class: 'form-control' } %>
+    </div>
 
-  <%= simple_form_for @peca do |form| %>
-  <div class="d-flex flex-col">
-    <%= form.association :servico, collection: Servico.all, label_method: :tipoDeServico, value_method: :id, include_blank: true %>
-        <%= form.input :name %>
-        <%= form.input :quantidade %>
-        <%= form.label :valor, style: "display: block" %>
-        <%= form.number_field :valor %>
-        <div class="ps-3">      
-          <%= form.submit %>
-        </div>
-    <% end %>
+    <div class="mb-3">
+      <%= form.label :valor, class: 'form-label' %>
+      <%= form.number_field :valor, class: 'form-control' %>
+    </div>
+
+    <div class="ps-3">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= link_to "Voltar", pecas_path, class: 'btn btn-secondary' %>
   </div>
-  <br>
+</div>
 
-  <div>
-    <%= link_to "Back to pecas", pecas_path %>
-  </div>
+
 </div>

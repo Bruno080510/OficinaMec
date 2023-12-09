@@ -25,7 +25,7 @@ class OficinasController < ApplicationController
 
     respond_to do |format|
       if @oficina.save
-        format.html { redirect_to oficina_url(@oficina), notice: "Oficina was successfully created." }
+        format.html { redirect_to oficinas_url, notice: "Oficina was successfully created." }
         format.json { render :show, status: :created, location: @oficina }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class OficinasController < ApplicationController
   def update
     respond_to do |format|
       if @oficina.update(oficina_params)
-        format.html { redirect_to oficina_url(@oficina), notice: "Oficina was successfully updated." }
+        format.html { redirect_to oficinas_url, notice: "Oficina was successfully updated." }
         format.json { render :show, status: :ok, location: @oficina }
       else
         format.html { render :edit, status: :unprocessable_entity }

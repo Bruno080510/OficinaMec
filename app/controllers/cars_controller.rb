@@ -51,24 +51,13 @@ class CarsController < ApplicationController
 
   # DELETE /cars/1 or /cars/1.json
   def destroy
-    @car = Car.find(params[:id])
-
-    begin
-      # Verificar se há serviços associados ao carro
-      if @car.servicos.present?
-        puts "Antes de destruir os serviços: #{Servico.where(car_id: @car.id).pluck(:id)}"
-        @car.servicos.destroy_all
-        puts "Depois de destruir os serviços: #{Servico.where(car_id: @car.id).pluck(:id)}"
-      end
-  
-      @car.destroy
-      redirect_to cars_path, notice: 'Carro foi excluído com sucesso.'
-    rescue StandardError => e
-      puts "Erro ao excluir o carro: #{e.message}"
-      redirect_to cars_path, alert: "Erro ao excluir o carro: #{e.message}"
+    @car.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to cars_url, notice: 'Carro excluído com sucesso.' }
+      format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
@@ -77,6 +66,6 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.require(:car).permit(:modelo, :marca, :ano, :description, :placa, :oficina_id, :servico_id, :tipoDeServico, :equipe_id, :name)
+      params.require(:car).permit(:modelo, :marca, :ano, :description, :placa)
     end
 end

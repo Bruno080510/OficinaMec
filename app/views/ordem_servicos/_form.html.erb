@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <%= form_with(model: ordem_servico, class: "contents") do |form| %>
+    <% if ordem_servico.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger mt-3">
+        <h2><%= pluralize(ordem_servico.errors.count, "error") %> prohibited this ordem_servico from being saved:</h2>
+
+        <ul>
+          <% ordem_servico.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+   <div class="mb-3">
+  <%= form.label :car_id, 'Placa do carro', class: 'form-label' %>
+  <%= select_tag 'ordem_servico[car_id]', options_for_select(Car.all.map { |c| [c.placa.upcase, c.id] }), class: 'form-select' %>
+</div>
+
+    <div class="mb-3">
+      <%= form.label :servico_id, 'Serviço', class: 'form-label' %>
+      <%= select_tag 'ordem_servico[servico_id]', options_for_select(Servico.all.map { |s| [s.tipoDeServico, s.id] }), class: 'form-select' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :peca_id, 'Peça', class: 'form-label' %>
+      <%= select_tag 'ordem_servico[peca_id]', options_for_select(Peca.all.map { |p| [p.name, p.id] }), class: 'form-select' %>
+    </div>
+
+    
+
+    <div class="mb-3">
+      <%= form.label :equipe_id, 'Equipe', class: 'form-label' %>
+      <%= select_tag 'ordem_servico[equipe_id]', options_for_select(Equipe.all.map { |e| [e.nome, e.id] }), class: 'form-select' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :data_hora, 'Data e Hora', class: 'form-label' %>
+      <%= form.datetime_field :data_hora, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :descricao, 'Descrição', class: 'form-label' %>
+      <%= form.text_area :descricao, rows: 4, class: 'form-control' %>
+    </div>
+
+    <div>
+      <%= form.submit "Salvar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

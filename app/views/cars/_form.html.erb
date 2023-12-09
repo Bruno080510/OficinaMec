@@ -1,8 +1,7 @@
-<%= form_with(model: car) do |form| %>
+<%= form_with(model: car, class: "mt-4") do |form| %>
   <% if car.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
-
       <ul>
         <% car.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,42 +10,37 @@
     </div>
   <% end %>
 
+  <div class="mb-3">
+    <%= form.label :modelo, class: "form-label" %>
+    <%= form.text_field :modelo, class: "form-control" %>
+  </div>
 
+  <div class="mb-3">
+    <%= form.label :marca, class: "form-label" %>
+    <%= form.text_field :marca, class: "form-control" %>
+  </div>
 
-  <div>
-    <%= form.label :modelo, style: "display: block" %>
-    <%= form.text_field :modelo, class:"ps-2 rounded" %>
+  <div class="mb-3">
+    <%= form.label :ano, class: "form-label" %>
+    <%= form.number_field :ano, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 3 %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :placa, class: "form-label" %>
+    <%= form.text_field :placa, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :oficina_id, "Cliente", class: "form-label" %>
+    <%= collection_select(:car, :oficina_id, Oficina.all, :id, :first_name, { prompt: true }, class: "form-select") %>
   </div>
 
   <div>
-    <%= form.label :marca, style: "display: block" %>
-    <%= form.text_field :marca %>
-  </div>
-
-  <div>
-    <%= form.label :ano, style: "display: block" %>
-    <%= form.number_field :ano %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :placa, style: "display: block" %>
-    <%= form.text_field :placa %>
-  </div>
-  <a>
-  <strong>Cliente</strong>
-  <%= collection_select(:car, :oficina_id, Oficina.all, :id, :first_name, prompt: true) %>
-</a>
-  <strong>Equipe</strong>
-<%= collection_select(:car, :equipe_id, Equipe.all, :id, :nome, prompt: true) %>
-
-
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Salvar", class: "btn btn-primary" %>
   </div>
 <% end %>

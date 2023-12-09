@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_220429) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_08_224804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,36 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_220429) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ordem_de_servicos", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.bigint "servico_id", null: false
+    t.bigint "peca_id", null: false
+    t.bigint "equipe_id", null: false
+    t.datetime "data_hora"
+    t.text "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_ordem_de_servicos_on_car_id"
+    t.index ["equipe_id"], name: "index_ordem_de_servicos_on_equipe_id"
+    t.index ["peca_id"], name: "index_ordem_de_servicos_on_peca_id"
+    t.index ["servico_id"], name: "index_ordem_de_servicos_on_servico_id"
+  end
+
+  create_table "ordem_servicos", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.bigint "servico_id", null: false
+    t.bigint "peca_id", null: false
+    t.bigint "equipe_id", null: false
+    t.datetime "data_hora"
+    t.text "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_ordem_servicos_on_car_id"
+    t.index ["equipe_id"], name: "index_ordem_servicos_on_equipe_id"
+    t.index ["peca_id"], name: "index_ordem_servicos_on_peca_id"
+    t.index ["servico_id"], name: "index_ordem_servicos_on_servico_id"
+  end
+
   create_table "pecas", force: :cascade do |t|
     t.string "name"
     t.integer "quantidade"
@@ -90,6 +120,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_220429) do
 
   add_foreign_key "cars", "equipes"
   add_foreign_key "mecanicos", "equipes"
+  add_foreign_key "ordem_de_servicos", "cars"
+  add_foreign_key "ordem_de_servicos", "equipes"
+  add_foreign_key "ordem_de_servicos", "pecas"
+  add_foreign_key "ordem_de_servicos", "servicos"
+  add_foreign_key "ordem_servicos", "cars"
+  add_foreign_key "ordem_servicos", "equipes"
+  add_foreign_key "ordem_servicos", "pecas"
+  add_foreign_key "ordem_servicos", "servicos"
   add_foreign_key "pecas", "servicos"
   add_foreign_key "servicos", "cars"
   add_foreign_key "servicos", "pecas"

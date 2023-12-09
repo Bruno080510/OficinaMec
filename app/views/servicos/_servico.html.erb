@@ -1,15 +1,14 @@
-<div style="margin-left: 200px; padding: 15px;">
-
-  <div id="<%= dom_id servico %>" class="d-flex flex-row">
-  <div>
-      <p>
-        <strong>Tipo de Servico:</strong>
-        <%= servico.tipoDeServico %>
-      </p>
-  </div>
-    <div>  
-      <p><strong>Valor</strong>
-        <%= servico.valor %></p>
+<div class="container mt-2">
+  <div id="<%= dom_id servico %>" class="card p-4 shadow-sm">
+    <div class="d-flex justify-content-between">
+      <div>
+        <h5 class="mb-3"><strong>Tipo de Serviço:</strong></h5>
+        <p class="mb-0"><%= servico.tipoDeServico %></p>
+      </div>
+      <div class="text-end">
+        <h5 class="mb-3"><strong>Valor:</strong></h5>
+        <p class="mb-0"><%= number_to_currency(servico.valor) %></p>
+      </div>
     </div>
   </div>
 </div>

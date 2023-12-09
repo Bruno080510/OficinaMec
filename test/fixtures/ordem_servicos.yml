@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car: one
+  servico: one
+  peca: one
+  equipe: one
+  data_hora: 2023-12-08 19:48:04
+  descricao: MyText
+
+two:
+  car: two
+  servico: two
+  peca: two
+  equipe: two
+  data_hora: 2023-12-08 19:48:04
+  descricao: MyText

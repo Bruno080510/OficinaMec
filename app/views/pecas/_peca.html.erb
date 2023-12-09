@@ -1,17 +1,13 @@
-<div id="<%= dom_id peca %>">
-  <p>
-    <strong>Name:</strong>
-    <%= peca.name %>
-  </p>
+<div id="<%= dom_id peca %>" class="card" style="width: 18rem; margin-bottom: 20px;">
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Name:</strong>
+      <%= peca.name %>
+    </p>
 
-  <p>
-    <strong>Quantidade:</strong>
-    <%= peca.quantidade %>
-  </p>
-
-  <p>
-    <strong>Valor:</strong>
-    <%= peca.valor %>
-  </p>
-
+    <p class="card-text">
+      <strong>Valor:</strong>
+      <%= peca.valor %>
+    </p>
+  </div>
 </div>
