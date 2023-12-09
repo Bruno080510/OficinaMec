@@ -10,8 +10,7 @@
     <% @pecas.each do |peca| %>
       <%= render peca %>
       <p>
-          <%= link_to "Edit this peca", edit_peca_path(peca), class:"btn btn-primary" %> |
-        <%= link_to "Show this peca", peca %>
+          <%= link_to "Editar peca", edit_peca_path(peca), class:"btn btn-primary" %>
       </p>
     <% end %>
   </div>

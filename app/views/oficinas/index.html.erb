@@ -3,6 +3,8 @@
   <p class="pb-2" style="color: green"><%= notice %></p>
 
   <h1>Clientes cadastrados</h1>
+    <%= link_to "Novo Cliente", new_oficina_path, class:"btn btn-success my-2" %>
+
 
   <div id="oficinas" class="d-flex flex-row">
     <div class=" d-flex flex-row">
@@ -17,5 +19,4 @@
     </div>
   </div>
 
-  <%= link_to "Novo Cliente", new_oficina_path, class:"btn btn-primary" %>
 </div>

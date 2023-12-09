@@ -4,32 +4,32 @@
     <ul class="navbar-nav justify-center text-center fs-4">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to 'Carros', cars_path, class: "nav-link " %>
+          <%= link_to 'Carros', cars_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Ordem de Servicos', ordem_servicos_path, class: "nav-link" %>
+          <%= link_to 'Ordem de Servicos', ordem_servicos_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Peças', pecas_path, class: "nav-link" %>
+          <%= link_to 'Peças', pecas_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Servicos', servicos_path, class: "nav-link" %>
+          <%= link_to 'Servicos', servicos_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Cliente', oficinas_path, class: "nav-link" %>
+          <%= link_to 'Cliente', oficinas_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Editar Usuário", edit_user_registration_path, class: "nav-link" %>
+          <%= link_to "Editar Usuário", edit_user_registration_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link text-white" %>
         </li>
       <% end %>
     </ul>
@@ -40,6 +40,5 @@
 <div class="main-content" style="margin-left: 200px; padding: 15px;">
   <div class="container-fluid">
     <!-- Your main content goes here -->
-    
   </div>
 </div>

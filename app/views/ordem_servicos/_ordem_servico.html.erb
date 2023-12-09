@@ -31,8 +31,10 @@
     </p>
 
     <% if action_name != "show" %>
-      <%= link_to "Editar ordem servico", edit_ordem_servico_path(ordem_servico), class: "btn btn-outline-secondary rounded-lg" %>
-      <hr class="mt-6">
+    <hr class="mt-6">
+  <%= link_to "Editar ordem servico", edit_ordem_servico_path(ordem_servico), class: "btn btn-primary rounded-lg" %>
+  <%= button_to "Finalizar", ordem_servico_path(ordem_servico), method: :delete, class: "btn btn-danger rounded-lg my-2" %>      
+      
     <% end %>
   </div>
 </div>
