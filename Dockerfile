@@ -18,12 +18,11 @@ FROM base as build
 
 # Install packages needed to build gems and PostgreSQL driver
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips libpq-dev libpq5 pkg-config
+    apt-get install --no-install-recommends -y build-essential git libvips libpq-dev libpq5 pkg-config libpq-dev
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle config --local build.pg --with-pg-config=/usr/pgsql-14/bin/pg_config && \
-    bundle install && \
+RUN bundle install --jobs "$(nproc)" --retry 5 && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
