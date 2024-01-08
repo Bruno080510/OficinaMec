@@ -1,14 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<div style="margin-left: 150px; padding: 15px;">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Mecanicos</h1>
+  <h1>Mecânicos</h1>
+  <%= link_to "Novo mecânico", new_mecanico_path, class: 'btn btn-success my-2' %>
 
-<div id="mecanicos">
-  <% @mecanicos.each do |mecanico| %>
-    <%= render mecanico %>
-    <p>
-      <%= link_to "Show this mecanico", mecanico %>
-    </p>
-  <% end %>
+  <div class="table-responsive">
+    <table class="table table-bordered ">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @mecanicos.each do |mecanico| %>
+          <tr>
+            <td><%= mecanico.nome %></td>
+            <td><%= mecanico.endereco %></td>
+            <td><%= mecanico.phone %></td>
+            <td>
+              <%= link_to "", edit_mecanico_path(mecanico), class: "bi bi-pencil-square text-primary h4", title: "Editar", data: { toggle: "tooltip", placement: "top" } %>
+              <%= link_to "", mecanico, method: :delete, data: { confirm: 'Tem certeza?' },class: "bi bi-trash-fill text-danger mx-3 h4", title: "Excluir", data: { toggle: "tooltip", placement: "top" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New mecanico", new_mecanico_path %>

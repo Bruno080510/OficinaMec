@@ -25,7 +25,7 @@ class CarsController < ApplicationController
   
     respond_to do |format|
       if @car.save
-        format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
+        format.html { redirect_to cars_path, notice: "Car was successfully created." }
         format.json { render :show, status: :created, location: @car }
       else
         puts @car.errors.full_messages # Adicione esta linha para imprimir os erros no console
@@ -40,7 +40,7 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
+        format.html { redirect_to cars_path, notice: "Car was successfully updated." }
         format.json { render :show, status: :ok, location: @car }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,14 +50,23 @@ class CarsController < ApplicationController
   end
 
   # DELETE /cars/1 or /cars/1.json
-  def destroy
-    @car.destroy
-    
-    respond_to do |format|
-      format.html { redirect_to cars_url, notice: 'Carro excluído com sucesso.' }
-      format.json { head :no_content }
-    end
+def destroy
+  begin
+    @car.destroy!
+    flash[:notice] = 'Carro excluído com sucesso.'
+  rescue ActiveRecord::RecordNotFound => e
+    flash[:alert] = "Erro ao excluir o carro: #{e.message}"
+  rescue StandardError => e
+    flash[:alert] = "Erro desconhecido ao excluir o carro: #{e.message}"
   end
+
+  respond_to do |format|
+    format.html { redirect_to cars_url }
+    format.json { head :no_content }
+  end
+end
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car

@@ -1,44 +1,80 @@
-<!-- Sidebar -->
-<aside class="navbar-dark bg-dark" style="position: fixed; left: 0; top: 0; bottom: 0; width: 200px;">
-  <div class="container-fluid">
-    <ul class="navbar-nav justify-center text-center fs-4">
+<aside class="navbar-dark bg-dark justify-content-center row" style="position: fixed; left: 0; top: 0; bottom: 0; width: 200px; transition: all 0.3s;">
+  <div class="row h-100 align-items-center justify-content-center">
+    <ul class="navbar-nav justify-center text-center row align-items-center fs-2" style="list-style: none; padding: 0;">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Carros', cars_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to cars_path, class: "nav-link text-white" do %>
+            <i class="bi bi-car-front-fill me-2"></i> 
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Ordem de Servicos', ordem_servicos_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to ordem_servicos_path, class: "nav-link text-white" do %>
+            <i class="bi bi-file-text-fill me-2"></i> 
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Peças', pecas_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to pecas_path, class: "nav-link text-white" do %>
+            <i class="bi bi-gear-fill me-2"></i> 
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Servicos', servicos_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to servicos_path, class: "nav-link text-white" do %>
+            <i class="bi bi-clipboard-check me-2"></i> 
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Cliente', oficinas_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to oficinas_path, class: "nav-link text-white" do %>
+            <i class="bi bi-person-fill me-2"></i> 
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Editar Usuário", edit_user_registration_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to equipes_path, class: "nav-link text-white" do %>
+            <i class="bi bi-people-fill me-2"></i> 
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to mecanicos_path, class: "nav-link text-white" do %>
+            <i class="bi bi-person-fill me-2"></i> 
+          <% end %>
+        </li>
+        <li class="nav-item col mb-2">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-white" do %>
+            <i class="bi bi-box-arrow-right me-2"></i> 
+          <% end %>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Criar Conta", new_user_registration_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to new_user_registration_path, class: "nav-link text-white" do %>
+            <i class="bi bi-person-fill me-2"></i> Criar Conta
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Entar", new_user_session_path, class: "nav-link text-white" %>
+        <li class="nav-item col mb-2">
+          <%= link_to new_user_session_path, class: "nav-link text-white" do %>
+            <i class="bi bi-box-arrow-in-right me-2"></i> Entrar
+          <% end %>
         </li>
       <% end %>
     </ul>
   </div>
 </aside>
 
-<!-- Main Content -->
 <div class="main-content" style="margin-left: 200px; padding: 15px;">
   <div class="container-fluid">
-    <!-- Your main content goes here -->
+    <!-- Seu conteúdo principal vai aqui -->
   </div>
 </div>
+
+<style>
+  /* Estilos adicionais para o efeito de hover */
+  .navbar-nav .nav-item {
+    transition: background-color 0.3s;
+  }
+
+  .navbar-nav .nav-item:hover {
+    background-color: #343a40; /* Tom mais escuro no hover */
+  }
+
+  .navbar-nav .nav-item:hover .nav-link {
+    color: #ffffff; /* Mudar a cor do texto no hover */
+  }
+</style>

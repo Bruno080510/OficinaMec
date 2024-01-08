@@ -1,12 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div style="margin-left: 200px; padding: 10px;">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @mecanico %>
+  <%= render @mecanico %>
 
-<p>Equipe destinado: <%= @mecanico.equipe.nome %></p>
+  <p>Equipe destinado: <%= @mecanico.equipe.nome %></p>
 
-<div>
-  <%= link_to "Edit this mecanico", edit_mecanico_path(@mecanico) %> |
-  <%= link_to "Back to mecanicos", mecanicos_path %>
+  <div>
+    <%= link_to "Edit this mecanico", edit_mecanico_path(@mecanico) %> |
+    <%= link_to "Back to mecanicos", mecanicos_path %>
 
-  <%= button_to "Destroy this mecanico", @mecanico, method: :delete %>
+    <%= button_to "Destroy this mecanico", @mecanico, method: :delete %>
+  </div>
 </div>

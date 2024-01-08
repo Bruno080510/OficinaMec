@@ -1,19 +1,32 @@
-<div style="margin-left: 200px; padding: 15px;">
+<div style="margin-left: 150px; padding: 15px;">
   <p style="color: green"><%= notice %></p>
 
-  <h1>Servicos Cadastrados</h1>
-    <%= link_to "Cadastrar Servico", new_servico_path, class: "btn btn-success my-3 fixed" %>
+  <h1>Serviços Cadastrados</h1>
+  <%= link_to "Cadastrar Serviço", new_servico_path, class: "btn btn-success my-3 fixed" %>
 
-
-  <div id="servicos">
-    <% @servicos.each do |servico| %>
-      <%= render servico %>
-      <p>
-        <div class="mr-2 my-3">
-          <%= link_to "Editar servico", edit_servico_path(servico), class: "btn btn-primary" %>
-        </div>
-      </p>
-    <% end %>
+  <div class="table-responsive">
+    <table class="table table-bordered ">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @servicos.each do |servico| %>
+          <tr>
+            <td><%= servico.tipoDeServico %></td>
+            <td><%= servico.valor %></td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Ações">
+                <%= link_to "", edit_servico_path(servico), class: "bi bi-pencil-square text-primary h4", title: "Editar", data: { toggle: "tooltip", placement: "top" } %>
+                <%= link_to "", servico, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "bi bi-trash-fill text-danger mx-3 h4", title: "Excluir", data: { toggle: "tooltip", placement: "top" } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
 </div>

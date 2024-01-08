@@ -1,17 +1,18 @@
-<div id="<%= dom_id mecanico %>">
-  <p>
-    <strong>Nome:</strong>
-    <%= mecanico.nome %>
-  </p>
+<div class="card" style="width: 18rem;">
+  <div id="<%= dom_id mecanico %>" class="card-body">
+    <h5 class="card-title">
+      <strong>Nome:</strong>
+      <%= mecanico.nome %>
+    </h5>
 
-  <p>
-    <strong>Endereco:</strong>
-    <%= mecanico.endereco %>
-  </p>
+    <p class="card-text">
+      <strong>Endereco:</strong>
+      <%= mecanico.endereco %>
+    </p>
 
-  <p>
-    <strong>Phone:</strong>
-    <%= mecanico.phone %>
-  </p>
-
+    <p class="card-text">
+      <strong>Phone:</strong>
+      <%= mecanico.phone %>
+    </p>
+  </div>
 </div>

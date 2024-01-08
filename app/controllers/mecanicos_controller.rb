@@ -25,7 +25,7 @@ class MecanicosController < ApplicationController
 
     respond_to do |format|
       if @mecanico.save
-        format.html { redirect_to mecanico_url(@mecanico), notice: "Mecanico was successfully created." }
+        format.html { redirect_to mecanicos_url, notice: "Mecanico was successfully created." }
         format.json { render :show, status: :created, location: @mecanico }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MecanicosController < ApplicationController
   def update
     respond_to do |format|
       if @mecanico.update(mecanico_params)
-        format.html { redirect_to mecanico_url(@mecanico), notice: "Mecanico was successfully updated." }
+        format.html { redirect_to mecanicos_url, notice: "Mecanico was successfully updated." }
         format.json { render :show, status: :ok, location: @mecanico }
       else
         format.html { render :edit, status: :unprocessable_entity }

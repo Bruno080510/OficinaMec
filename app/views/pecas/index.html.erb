@@ -1,18 +1,31 @@
-<div style="margin-left: 200px; padding: 15px;">
-
+<div style="margin-left: 150px; padding: 15px;">
   <p style="color: green"><%= notice %></p>
 
   <h1>Pecas</h1>
-    <%= link_to "New peca", new_peca_path, class:"btn btn-success my-2" %>
+  <%= link_to "Nova peca", new_peca_path, class: "btn btn-success my-2" %>
 
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Valor</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pecas.each do |peca| %>
+          <tr>
+            <td><%= peca.name %></td>
+            <td><%= peca.valor %></td>
+            <td><%= link_to "", edit_peca_path(peca), class: "bi bi-pencil-square text-primary h4", title: "Editar", data: { toggle: "tooltip", placement: "top" } %>
+            
+              <%= link_to "", peca, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "bi bi-trash-fill text-danger mx-3 h4", title: "Excluir", data: { toggle: "tooltip", placement: "top" } %>
+            </td>
 
-  <div id="pecas">
-    <% @pecas.each do |peca| %>
-      <%= render peca %>
-      <p>
-          <%= link_to "Editar peca", edit_peca_path(peca), class:"btn btn-primary" %>
-      </p>
-    <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
 </div>

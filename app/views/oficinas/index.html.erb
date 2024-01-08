@@ -1,22 +1,28 @@
-<div style="margin-left: 200px; padding: 15px;">
-
+<div style="margin-left: 150px; padding: 15px;">
   <p class="pb-2" style="color: green"><%= notice %></p>
 
   <h1>Clientes cadastrados</h1>
-    <%= link_to "Novo Cliente", new_oficina_path, class:"btn btn-success my-2" %>
+  <%= link_to "Novo Cliente", new_oficina_path, class:"btn btn-success my-2" %>
 
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
 
-  <div id="oficinas" class="d-flex flex-row">
-    <div class=" d-flex flex-row">
-      <% @oficinas.each do |oficina| %>
-      <div >    
-          <%= render oficina %>
-          <p>
-            <%= link_to "Mostrar cliente", oficina %>
-          </p>
-      </div>
-      <% end %>
-    </div>
+        </tr>
+      </thead>
+      <tbody>
+        <% @oficinas.each do |oficina| %>
+          <tr>
+            <td><%= oficina.first_name %></td>
+            <td><%= oficina.email %></td>
+            <td><%= oficina.phone %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
 </div>

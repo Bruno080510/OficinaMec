@@ -1,21 +1,77 @@
-<div style="margin-left: 200px; padding: 10px;">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<style>
+  /* Estilo para evitar sobreposição do sidebar */
+  #conteudo {
+    margin-left: 150px; /* Ajuste conforme necessário para a largura do seu sidebar */
+    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal se necessário */
+  }
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Ordem servicos</h1>
-    <%= link_to "Nova ordem servico", new_ordem_servico_path, class: "btn btn-success" %>
-  </div>
-</div>
+  @media (max-width: 768px) {
+    #conteudo {
+      margin-left: 0; /* Quando a tela for menor, mantenha o conteúdo à esquerda */
+    }
+  }
+</style>
 
-  <div id="ordem_servicos" class="min-w-full" style="margin-left: 60px; padding: 15px;">
-    <div class="row row-cols-1 row-cols-md-3">
-      <% @ordem_servicos.each do |ordem_servico| %>
-        <div class="col mb-4">
-          <%= render partial: 'ordem_servicos/ordem_servico', locals: { ordem_servico: ordem_servico } %>
-        </div>
-        
-      <% end %>
+<div id="conteudo">
+  <!-- Seu conteúdo aqui -->
+  <div style="margin-left: 10px; padding: 10px;">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-4xl">Ordem Serviços</h1>
+      <%= link_to "Nova ordem serviço", new_ordem_servico_path, class: "btn btn-success" %>
     </div>
-  </div>
+
+<div id="ordem_servicos" class="min-w-full" style=" padding: 10px;">
+  <table class="table-fixed">
+    <thead>
+      <tr>
+        <th class="w-1/6">Carro</th>
+        <th class="w-1/6">Serviço</th>
+        <th class="w-1/6">Peça</th>
+        <th class="w-1/6">Equipe</th>
+        <th class="w-1/6">Data e Hora</th>
+        <th class="w-1/6">Descrição</th>
+        <th class="w-1/6">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ordem_servicos.each do |ordem_servico| %>
+        <tr>
+          <td class="border px-2 py-1">
+            <strong class="block font-medium mb-1">Carro:</strong>
+            <%= ordem_servico.car.modelo %> (<%= ordem_servico.car.marca %> - <%= ordem_servico.car.ano %>)
+          </td>
+          <td class="border px-2 py-1">
+            <strong class="block font-medium">Serviço:</strong>
+            <%= ordem_servico.servico.tipoDeServico %> | Valor: <%= number_to_currency(ordem_servico.servico.valor) %>
+          </td>
+          <td class="border px-2 py-1">
+            <strong class="block font-medium">Peça:</strong>
+            <%= ordem_servico.peca.name %> | Valor: <%= number_to_currency(ordem_servico.peca.valor) %>
+          </td>
+          <td class="border px-2 py-1">
+            <strong class="block font-medium">Equipe:</strong>
+            <%= ordem_servico.equipe.nome %>
+          </td>
+          <td class="border px-2 py-1">
+            <strong class="block font-medium">Data hora:</strong>
+            <%= ordem_servico.data_hora %>
+          </td>
+          <td class="border px-2 py-1">
+            <strong class="block font-medium">Descrição:</strong>
+            <%= ordem_servico.descricao %>
+          </td>
+          <td class="border px-2 py-1">
+            <% if action_name != "show" %>
+             <%= link_to "", edit_ordem_servico_path(ordem_servico), class: "bi bi-pencil-square text-primary h4", title: "Editar", data: { toggle: "tooltip", placement: "top" } %>
+              <%= link_to "", ordem_servico_path(ordem_servico), method: :delete, class: "bi bi-trash-fill my-1" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
