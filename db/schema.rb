@@ -33,6 +33,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_224804) do
     t.text "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "funcionario_id"
+    t.index ["funcionario_id"], name: "index_equipes_on_funcionario_id"
   end
 
   create_table "mecanicos", force: :cascade do |t|
@@ -53,21 +55,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_224804) do
     t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ordem_de_servicos", force: :cascade do |t|
-    t.bigint "car_id", null: false
-    t.bigint "servico_id", null: false
-    t.bigint "peca_id", null: false
-    t.bigint "equipe_id", null: false
-    t.datetime "data_hora"
-    t.text "descricao"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["car_id"], name: "index_ordem_de_servicos_on_car_id"
-    t.index ["equipe_id"], name: "index_ordem_de_servicos_on_equipe_id"
-    t.index ["peca_id"], name: "index_ordem_de_servicos_on_peca_id"
-    t.index ["servico_id"], name: "index_ordem_de_servicos_on_servico_id"
   end
 
   create_table "ordem_servicos", force: :cascade do |t|
@@ -114,16 +101,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_224804) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "cars", "equipes"
   add_foreign_key "mecanicos", "equipes"
-  add_foreign_key "ordem_de_servicos", "cars"
-  add_foreign_key "ordem_de_servicos", "equipes"
-  add_foreign_key "ordem_de_servicos", "pecas"
-  add_foreign_key "ordem_de_servicos", "servicos"
   add_foreign_key "ordem_servicos", "cars"
   add_foreign_key "ordem_servicos", "equipes"
   add_foreign_key "ordem_servicos", "pecas"
